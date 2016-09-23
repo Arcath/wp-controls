@@ -54,6 +54,18 @@ function media_icons_bind_events(controlName){
     media_icons_redraw_list(controlName)
   })
 
+  jQuery('.fip-box').on('click', function(){
+    input = jQuery(this).parent('.fip-icons-container').parent('.selector-popup').parent('.icons-selector').parent('label').children('*[data-field="icon"]')
+
+    index = jQuery(input).data().index
+
+    value = jQuery(this).attr('title')
+
+    mediaIcons[controlName][index]['icon'] = value
+
+    media_icons_redraw_list(controlName)
+  })
+
   jQuery('#media-icons-list input.color-picker').wpColorPicker({
     palettes: ['#39599F', '#45B0E3', '#E70031', '#FF802C'],
     change: function(event, ui){
