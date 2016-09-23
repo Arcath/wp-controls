@@ -14,4 +14,4 @@ require_once('path/to/wp-controls/controls.php');
 
 The controls are provided as `Multi_Images_Control` and `Media_Icons_control`.
 
-For More Information see [this post](https://arcath.net/2016/09/wp-controls/)
+For More Information see [this post](https://arcath.net/2016/09/wp-controls/).
