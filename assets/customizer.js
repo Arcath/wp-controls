@@ -125,7 +125,7 @@ function media_icons_redraw_list(controlName){
     jQuery(list).append("<li data-index=\"" + i + "\">\
       <label id=\"media-icons-" + i + "\">\
         <b>Icon " + i + "</b> <a href=\"#\" class=\"mi-remove\" data-index=\"" + i + "\">Remove</a> | <a href=\"#\" class=\"mi-up\" data-index=\"" + i + "\">Up</a> | <a href=\"#\" class=\"mi-down\" data-index=\"" + i + "\">Down</a><br />\
-        <input type=\"text\" placeholder=\"Icon\" data-index=\"" + i + "\" data-field=\"icon\" class=\"mi-refresh icon-select\" value=\"" + mediaIcons[controlName][i].icon + "\" />\
+        <input type=\"text\" placeholder=\"Icon\" data-index=\"" + i + "\" data-field=\"icon\" class=\"icon-select\" value=\"" + mediaIcons[controlName][i].icon + "\" />\
         <input type=\"text\" placeholder=\"URL\" data-index=\"" + i + "\" data-field=\"url\" class=\"mi-refresh\"  value=\"" + mediaIcons[controlName][i].url + "\"/>\
         <label id=\"media-icons-" + i + "-color-label\">\
           <input type=\"text\" data-index=\"" + i + "\" data-field=\"color\" class=\"mi-refresh color-picker\"  value=\"" + mediaIcons[controlName][i].color + "\"/>\
