@@ -10,11 +10,13 @@ class MultiImagesControl extends WP_Customize_Control{
       window.multiImagesLoad['<?php echo($this->settings['default']->id); ?>'] = [
         <?php $i = 0; foreach($this->value() as $image):
           $data = wp_get_attachment_metadata($image);
-          $data['id'] = $image;
-          foreach($data['sizes'] as $size => $sizeData){
-            $data['sizes'][$size]['url'] = wp_get_attachment_image_src($image, $size)[0];
-          }
-          echo(json_encode($data)); ?>,
+          if(isset($data['sizes'])){
+            $data['id'] = $image;
+            foreach($data['sizes'] as $size => $sizeData){
+              $data['sizes'][$size]['url'] = wp_get_attachment_image_src($image, $size)[0];
+            }
+            echo(json_encode($data) . ',');
+          } ?>
         <?php endforeach; ?>
       ]
     </script>
