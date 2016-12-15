@@ -26,7 +26,7 @@ class MultiImagesControl extends WP_Customize_Control{
       <i>
         <?php echo $this->description; ?>
       </i>
-      <input type="button" id="multiImages-add" class="button" value="<?php _e('Add an Image', 'widebanner'); ?>">
+      <input type="button" id="multiImages-add" class="button" value="<?php _e('Add an Image', 'wp-controls'); ?>">
       <label>
         <ul id="multiImages-images">
         </ul>

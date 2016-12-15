@@ -10,7 +10,9 @@ if(class_exists('WP_Customize_Control')){
     return $url;
   }
 
+  require_once('controls/dropdown_categories.php');
   require_once('controls/multi_images.php');
   require_once('controls/media_icons.php');
+  require_once('controls/text_area.php');
 }
 ?>
