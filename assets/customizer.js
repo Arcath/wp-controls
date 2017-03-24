@@ -29,6 +29,20 @@ function media_icons_load_icons(){
   }
 }
 
+function media_icons_bind_select(controlName){
+  jQuery('.fip-box').on('click', function(){
+    input = jQuery(this).parent('.fip-icons-container').parent('.selector-popup').parent('.icons-selector').parent('label').children('*[data-field="icon"]')
+
+    index = jQuery(input).data().index
+
+    value = jQuery(this).attr('title')
+
+    mediaIcons[controlName][index]['icon'] = value
+
+    media_icons_redraw_list(controlName)
+  })
+}
+
 function media_icons_bind_events(controlName){
   cont = jQuery('*[data-customize-setting-link="' + controlName + '"]').parent('label')
 
@@ -54,16 +68,12 @@ function media_icons_bind_events(controlName){
     media_icons_redraw_list(controlName)
   })
 
-  jQuery('.fip-box').on('click', function(){
-    input = jQuery(this).parent('.fip-icons-container').parent('.selector-popup').parent('.icons-selector').parent('label').children('*[data-field="icon"]')
+  media_icons_bind_select(controlName)
 
-    index = jQuery(input).data().index
-
-    value = jQuery(this).attr('title')
-
-    mediaIcons[controlName][index]['icon'] = value
-
-    media_icons_redraw_list(controlName)
+  jQuery('.icons-search-input').on('keypress', function(){
+    setTimeout(function(){
+      media_icons_bind_select(controlName)
+    }, 200)
   })
 
   jQuery('#media-icons-list input.color-picker').wpColorPicker({
