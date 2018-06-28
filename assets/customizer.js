@@ -46,7 +46,15 @@ function media_icons_bind_select(controlName){
 function media_icons_bind_events(controlName){
   cont = jQuery('*[data-customize-setting-link="' + controlName + '"]').parent('label')
 
-  jQuery('.icon-select').fontIconPicker({source: fontAwesome})
+  jQuery('.icon-select').iconpicker()
+  jQuery('.icon-select').on('iconpickerSelect', function(e){
+    const instance = e.iconpickerItem.context.title.substring(1)
+    const data = e.target.dataset
+
+    mediaIcons[controlName][data.index][data.field] = instance
+
+    media_icons_redraw_list(controlName)
+  })
 
   jQuery(jQuery(cont).children('#mi-add-new')).on('click', function(event){
     event.preventDefault()
@@ -66,14 +74,6 @@ function media_icons_bind_events(controlName){
     mediaIcons[controlName][index][field] = value
 
     media_icons_redraw_list(controlName)
-  })
-
-  media_icons_bind_select(controlName)
-
-  jQuery('.icons-search-input').on('keypress', function(){
-    setTimeout(function(){
-      media_icons_bind_select(controlName)
-    }, 200)
   })
 
   jQuery('#media-icons-list input.color-picker').wpColorPicker({

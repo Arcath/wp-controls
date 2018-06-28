@@ -1,0 +1,7 @@
+{
+  "name": "wp-controls",
+  "private": true,
+  "dependencies": {
+    "fontawesome-iconpicker": "^3.0.0"
+  }
+}

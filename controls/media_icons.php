@@ -6,10 +6,10 @@ class Media_Icons_Control extends WP_Customize_Control{
   }
   public function assets(){
     wp_enqueue_style('wp-color-picker');
-    wp_enqueue_style('font-icon-picker-css', wp_controls_get_base_path() . '/assets/fonticonpicker.css');
-    wp_enqueue_style('font-awesome', wp_controls_get_base_path() . '/assets/css/font-awesome.min.css');
-    wp_enqueue_script('font-icon-picker', wp_controls_get_base_path() . '/assets/fonticonpicker.js', array('jquery'));
-    wp_enqueue_script('controls-customizer', wp_controls_get_base_path() . '/assets/customizer.js', array('jquery', 'customize-preview', 'wp-color-picker', 'font-icon-picker'));
+    wp_enqueue_style('font-awesome-picker', wp_controls_get_base_path() . '/node_modules/fontawesome-iconpicker/dist/css/fontawesome-iconpicker.min.css');
+    wp_enqueue_script('font-awesome', 'https://use.fontawesome.com/releases/v5.0.13/js/all.js', array('jquery'));
+    wp_enqueue_script('font-awesome-picker', wp_controls_get_base_path() . '/node_modules/fontawesome-iconpicker/dist/js/fontawesome-iconpicker.min.js', array('jquery', 'font-awesome'));
+    wp_enqueue_script('controls-customizer', wp_controls_get_base_path() . '/assets/customizer.js', array('jquery', 'customize-preview', 'wp-color-picker', 'font-awesome', 'font-awesome-picker'));
   }
   public function render_content(){
     ?>
