@@ -1,5 +1,14 @@
 <?php
 class MultiImagesControl extends WP_Customize_Control{
+  public function __construct($manager, $id, $args = array()){
+    add_action('customize_controls_enqueue_scripts', array($this, 'assets'));
+    parent::__construct($manager, $id, $args);
+  }
+
+  public function assets(){;
+    wp_enqueue_script('controls-customizer', wp_controls_get_base_path() . '/assets/multi_images.js', array('jquery'));
+  }
+
   public function render_content(){
     ?>
     <script type="text/javascript">
@@ -33,6 +42,11 @@ class MultiImagesControl extends WP_Customize_Control{
       </label>
       <input type="hidden" <?php echo($this->link()); ?> id="multi-images-data">
     </label>
+    <script>
+      jQuery(document).on('ready',function(){
+        multi_images_bind_events('<?php echo($this->settings['default']->id); ?>')
+      })
+    </script>
     <?php
   }
 }
