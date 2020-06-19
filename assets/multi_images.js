@@ -44,7 +44,18 @@ function multi_images_redraw_list(controlName){
     image = multiImages.images[controlName][i]
     console.dir(image)
     data.push(image.id)
-    jQuery(list).append('<li data-index="' + i + '"><img src="' + (image.sizes.thumbnail ? image.sizes.thumbnail : image.sizes.full).url + '" width="150" height="150" /><br /><a href="#" class="mui-remove">Remove</a></li>')
+
+    var size = 'thumbnail'
+
+    if(!image.sizes.thumbnail){
+      if(!image.sizes.full){
+        size = Object.keys(image.sizes)[0]
+      }else{
+        size = 'full'
+      }
+    }
+
+    jQuery(list).append('<li data-index="' + i + '"><img src="' + image.sizes[size].url + '" width="150" height="150" /><br /><a href="#" class="mui-remove">Remove</a></li>')
   }
 
   jQuery(list).children('li').children('.mui-remove').on('click', function(event){
