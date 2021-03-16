@@ -6,46 +6,41 @@ class MultiImagesControl extends WP_Customize_Control{
   }
 
   public function assets(){;
-    wp_enqueue_script('controls-customizer', wp_controls_get_base_path() . '/assets/multi_images.js', array('jquery'));
+    wp_enqueue_script('react', 'https://unpkg.com/react@16/umd/react.production.min.js', array(), null);
+    wp_enqueue_script('react-dom', 'https://unpkg.com/react-dom@16/umd/react-dom.production.min.js', array('react'), null);
+    wp_enqueue_script('babel', 'https://unpkg.com/babel-standalone@6/babel.min.js', array(), null);
+    
+    wp_enqueue_script('multi-images-control-component', wp_controls_get_base_path() . '/assets/multi_images.js', array('react', 'react-dom', 'babel'));
+
+    add_filter('script_loader_tag', function($tag, $handle, $src){
+      if('multi-images-control-component' == $handle){
+        $tag = str_replace("<script", "<script type='text/babel'", $tag);
+      }
+    
+      return $tag;
+    }, 10, 3);
   }
 
   public function render_content(){
-    ?>
-    <script type="text/javascript">
-      if(!(window.hasOwnProperty('multiImagesLoad'))){
-        window.multiImagesLoad = {}
-      }
+    $data = array();
 
-      window.multiImagesLoad['<?php echo($this->settings['default']->id); ?>'] = [
-        <?php $i = 0; foreach($this->value() as $image):
-          $data = wp_get_attachment_metadata($image);
-          if(isset($data['sizes'])){
-            $data['id'] = $image;
-            foreach($data['sizes'] as $size => $sizeData){
-              $data['sizes'][$size]['url'] = wp_get_attachment_image_src($image, $size)[0];
-            }
-            echo(json_encode($data) . ',');
-          } ?>
-        <?php endforeach; ?>
-      ]
-    </script>
-    <label id="multiImages">
-      <b><?php echo $this->label ?></b>
-      <br />
-      <i>
-        <?php echo $this->description; ?>
-      </i>
-      <input type="button" id="multiImages-add" class="button" value="<?php _e('Add an Image', 'wp-controls'); ?>">
-      <label>
-        <ul id="multiImages-images">
-        </ul>
-      </label>
-      <input type="hidden" <?php echo($this->link()); ?> id="multi-images-data">
-    </label>
-    <script>
-      jQuery(document).on('ready',function(){
-        multi_images_bind_events('<?php echo($this->settings['default']->id); ?>')
-      })
+    foreach($this->value() as $imageId){
+      $imageData = wp_get_attachment_metadata($imageId);
+      $thumbnail = wp_get_attachment_image_src($imageId, 'thumbnail')[0];
+
+      array_push($data, array(
+        'id' => $imageId,
+        'thumbnail' => $thumbnail
+      ));
+    }
+
+    $json = json_encode($data);
+    ?>
+    <div data-control="<?php echo($this->settings['default']->id); ?>"></div>
+    <script type="text/javascript">
+      jQuery(document).on('load-multi-images', function(){ 
+        multi_images_control("<?php echo($this->settings['default']->id); ?>", "<?php echo(base64_encode($json)); ?>");
+      });
     </script>
     <?php
   }
