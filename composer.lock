@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "82fae2bf56c76338f0cb1222757fc749",
+    "content-hash": "3df00f6c09f5b3e5c1e0c1406949d619",
     "packages": [
         {
             "name": "ed-itsolutions/wp-fontawesome",
-            "version": "v0.0.2",
+            "version": "v0.0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Ed-ITSolutions/wp-fontawesome.git",
-                "reference": "019a421a4fb6e24e72321d4977f027ede8349efa"
+                "reference": "105e68434cad93379b716a3ff69ba5053415e8e2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Ed-ITSolutions/wp-fontawesome/zipball/019a421a4fb6e24e72321d4977f027ede8349efa",
-                "reference": "019a421a4fb6e24e72321d4977f027ede8349efa",
+                "url": "https://api.github.com/repos/Ed-ITSolutions/wp-fontawesome/zipball/105e68434cad93379b716a3ff69ba5053415e8e2",
+                "reference": "105e68434cad93379b716a3ff69ba5053415e8e2",
                 "shasum": ""
             },
             "require": {
@@ -45,9 +45,9 @@
             "description": "Simple easy to bundle font-awesome for WordPress",
             "support": {
                 "issues": "https://github.com/Ed-ITSolutions/wp-fontawesome/issues",
-                "source": "https://github.com/Ed-ITSolutions/wp-fontawesome/tree/v0.0.2"
+                "source": "https://github.com/Ed-ITSolutions/wp-fontawesome/tree/v0.0.3"
             },
-            "time": "2021-03-15T17:40:51+00:00"
+            "time": "2021-03-16T10:43:59+00:00"
         },
         {
             "name": "fortawesome/font-awesome",

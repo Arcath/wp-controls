@@ -4,12 +4,16 @@ Useful Theme Customizer Controls for WordPress.
 
 # Usage
 
-Drop the `wp-controls` folder into your theme anywhere.
+Install from composer with:
 
-In `functions.php` add:
+```
+composer require arcath/wp-controls
+```
+
+In `functions.php` make sure you have to load up composer modules.
 
 ```php
-require_once('path/to/wp-controls/controls.php');
+require_once('vendor/autoload.php');
 ```
 
 The controls are provided as `Multi_Images_Control` and `Media_Icons_control`.

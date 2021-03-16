@@ -1,9 +1,9 @@
 {
   "name": "arcath/wp-controls",
-  "description": "A short description of what your package does",
+  "description": "Additional controls for the WordPress theme customizer.",
   "require": {
     "php": "^5.3.3 || ^7.0",
-    "ed-itsolutions/wp-fontawesome": "^0.0.2"
+    "ed-itsolutions/wp-fontawesome": "^0.0.3"
   },
   "license": "MIT",
   "authors": [
